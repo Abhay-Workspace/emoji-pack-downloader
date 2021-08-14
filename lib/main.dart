@@ -9,11 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Emoji Pack Download',
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: MyHomePage(title: 'Emoji Pack Downloader'),
+      home: MyHomePage(title: 'Emoji Pack Download'),
     );
   }
 }
@@ -34,14 +34,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              HomePage(),
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          // scrollDirection: Axis.horizontal,
+          // physics: BouncingScrollPhysics(),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                ),
+                HomePage(),
+              ],
+            ),
           ),
         ),
       ),
