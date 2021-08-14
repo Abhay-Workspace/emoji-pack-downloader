@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 class CustomCard extends StatefulWidget {
   final color;
@@ -21,6 +23,14 @@ class CustomCard extends StatefulWidget {
 }
 
 class _CustomCardState extends State<CustomCard> {
+  void _downloadZIP() {
+    html.window.open(widget.link, "_blank");
+  }
+
+  void _donate() {
+    html.window.open('https://www.buymeacoffee.com/abhaypaswan', "_blank");
+  }
+
   @override
   Widget build(BuildContext context) {
     var sh = MediaQuery.of(context).size.height;
@@ -52,26 +62,33 @@ class _CustomCardState extends State<CustomCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Icon(Icons.download),
-                      SizedBox(width: sw * 0.02),
-                      Text(
-                        'Download',
-                        style: TextStyle(color: Colors.black.withOpacity(0.8)),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.attach_money),
-                      SizedBox(width: sw * 0.02),
-                      Text(
-                        'Donate',
-                        style: TextStyle(color: Colors.black.withOpacity(0.8)),
-                      ),
-                    ],
-                  ),
+                  TextButton(
+                      onPressed: _downloadZIP,
+                      child: Row(
+                        children: [
+                          Icon(Icons.download),
+                          SizedBox(width: sw * 0.02),
+                          Text(
+                            'Download',
+                            style:
+                                TextStyle(color: Colors.black.withOpacity(0.8)),
+                          ),
+                        ],
+                      )),
+                  TextButton(
+                    onPressed: _donate,
+                    child: Row(
+                      children: [
+                        Icon(Icons.attach_money),
+                        SizedBox(width: sw * 0.02),
+                        Text(
+                          'Donate',
+                          style:
+                              TextStyle(color: Colors.black.withOpacity(0.8)),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
